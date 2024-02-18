@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS toolshare;
+CREATE DATABASE toolshare;
