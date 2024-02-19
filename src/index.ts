@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from "express";
 import Database from "./config/Database";
 import exampletableRouter from "./routers/ExampletableRouter";
 import fs from "fs/promises";
+import ProfileRouter from "./routers/ProfileRouter";
 
 class App {
   public app: Application;
@@ -51,6 +52,7 @@ class App {
       res.send("welcome home");
     });
     this.app.use("/api/docs", this.readEndpoints);
+    this.app.use("/api/profile", ProfileRouter);
     this.app.use("/api/exampletable", exampletableRouter);
   }
 }
