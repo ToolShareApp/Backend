@@ -19,11 +19,11 @@ class Database {
     private async connectToPostgreSQL(){
         this.sequelize = new Sequelize (
         // Uncomment line below before git commit, comment out when working locally
-        this.POSTGRES_URI , 
+        // this.POSTGRES_URI , 
         {
             database: this.POSTGRES_DB,
             // Comment out line below before git commit, uncomment when working locally
-            //host: this.POSTGRES_HOST,
+            host: this.POSTGRES_HOST,
             port: this.POSTGRES_PORT,
             dialect: "postgres",
             models:[Exampletable],
