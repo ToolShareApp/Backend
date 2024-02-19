@@ -21,7 +21,7 @@ export const UpdateExampletableSchema = z.object({
         counter: z
             .number()
             .int({message: "Only Integers allowed"})
-            .nonnegative({message: "Counter mst be equal to or larger than zero"}),
+            .nonnegative({message: "Counter must be equal to or larger than zero"}),
         name: z
             .string()
             .min(1,{message: "Name must be at least one character"}),

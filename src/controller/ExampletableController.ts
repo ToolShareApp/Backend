@@ -28,7 +28,7 @@ class ExampletableController {
 
     async update(req:Request, res:Response){
         try{
-            const id = parseInt(req.params["record_id"]);
+            const id = parseInt(req.params["exampletable_id"]);
             const new_exampletable_row  = new Exampletable();
             new_exampletable_row.id = id;
             new_exampletable_row.counter = req.body.counter;
@@ -52,7 +52,7 @@ class ExampletableController {
 
     async delete (req:Request, res:Response){
         try{
-            const id = parseInt(req.params["record_id"]);
+            const id = parseInt(req.params["exampletable_id"]);
 
             await new ExampletableQuery().delete(id);
 
@@ -71,7 +71,7 @@ class ExampletableController {
 
     async selectWhereId (req:Request, res:Response){
         try{
-            const id = parseInt(req.params["record_id"]);
+            const id = parseInt(req.params["exampletable_id"]);
             const new_exampletable_row  = await new ExampletableQuery().retrieveById(id);
 
             res.status(201).json({
