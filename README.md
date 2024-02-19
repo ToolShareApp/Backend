@@ -12,8 +12,7 @@ Please follow these instructions when setting this repo up to work locally or se
     ``` 
 4. in `./src/config/Database.ts` comment out line 22 and comment in line 26. Once done the file should look like this:
 
-<img src="https://i.imgur.com/ijGSiNX.png" alt="local DB setup" width="700"/>
-
+<img src="https://i.imgur.com/CZv4DkB.png" alt="local DB setup" width="700"/>
 
 5. To start the server locally run the following command:
 ```
@@ -22,7 +21,7 @@ npm run start-dev
 
 At this point you should see some logging in the terminal. It should look something like the image below.
 
-<img src="http://i.imgur.com/jxWKbK3.png" alt="local terminal output" width="700"/>
+<img src="http://i.imgur.com/jgaMDcY.png" alt="local terminal output" width="700"/>
 
 If you see a message `Postgres alive`, the it has worked. You are now running the backend locally on: `http://localhost:8001/`
 
