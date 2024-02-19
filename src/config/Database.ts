@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import * as dotenv from "dotenv";
 import { Exampletable } from "../db/models/ExampletableModel";
+import { Profile } from "../db/models/ProfileModel";
 
 dotenv.config()
 
@@ -26,7 +27,7 @@ class Database {
             //host: this.POSTGRES_HOST,
             port: this.POSTGRES_PORT,
             dialect: "postgres",
-            models:[Exampletable],
+            models:[Exampletable, Profile],
         })
 
         await this.sequelize.authenticate()
