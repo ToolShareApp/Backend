@@ -1,6 +1,6 @@
 # Instructions
 
-Please follow these instructions when setting this repo up to work locally or seploying to production
+Please follow these instructions when setting this repo up to work locally or deploying to production.
 
 ## Local setup
 
@@ -21,11 +21,11 @@ Please follow these instructions when setting this repo up to work locally or se
 npm run start-dev
 ```
 
-At this point you should see some logging in the terminal. It should look something like the image below.
+At this point you should see some logging in the terminal. It should look something like the image below. a new folder named `build` should have appeared in your Explorer tree.
 
 <img src="http://i.imgur.com/jgaMDcY.png" alt="local terminal output" width="700"/>
 
-If you see a message `Postgres alive`, then it has worked. You are now running the backend locally on: `http://localhost:8001/`
+If you see a message `Postgres alive` in the terminal, then it has worked. You are now running the backend locally on: `http://localhost:8001/`
 
 
 ## Deployment
@@ -34,8 +34,8 @@ If you see a message `Postgres alive`, then it has worked. You are now running t
 
 <img src="https://i.imgur.com/nIFKlwM.png" alt="local DB setup" width="500"/>
 
-2. Push the changes to this repo.
-3. Render should pick the changes up on its own. It will take ~5 minutes to redeploy, take a break, make some beverage. Or if you want to observe it deploying, then follow these instructions:
+2. Push your other changes to this repo.
+3. Render should pick the new commit up by itself. It will take ~5 minutes to redeploy, take a break, make some beverage. Or, if you want to observe it deploying, then follow these instructions:
 
     3.1. Log into Render (credentials in #useful-links channel)
 
