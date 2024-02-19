@@ -38,7 +38,7 @@ class ExampletableController {
             await new ExampletableQuery().update(new_exampletable_row);
 
             res.status(201).json({
-                status:"Created!",
+                status:"Updated!",
                 message: "Successfully updated a record!"
             });
         } catch (err) {

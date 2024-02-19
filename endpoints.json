@@ -1,0 +1,77 @@
+{
+    "GET /api": {
+      "description": "serves up a json representation of all the available endpoints of the api",
+      "queries": [],
+      "requestBody": {},
+      "exampleResponse": { "data": "The content of THIS file. Obiously, the exact response cannot be typed out because it would be infinitelly recursive"}
+    },
+    "GET /api/exampletable": {
+        "description": "all data from the exampletable",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "id": 1,
+                                    "counter": 12,
+                                    "name": "Anna",
+                                    "birthday": "2015-02-02T06:04:00.000Z",
+                                    "createdAt": "2024-02-19T09:35:22.430Z",
+                                    "updatedAt": "2024-02-19T09:35:22.430Z"
+                                },
+                                {
+                                    "id": 2,
+                                    "counter": 17,
+                                    "name": "Peter",
+                                    "birthday": "2015-02-02T06:04:00.000Z",
+                                    "createdAt": "2024-02-19T10:24:37.962Z",
+                                    "updatedAt": "2024-02-19T10:24:37.962Z"
+                                }]}
+      },
+
+      "GET /api/exampletable/:exampletable_id": {
+        "description": "returns single record from exampletable by record id",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "id": 1,
+                                    "counter": 12,
+                                    "name": "Anna",
+                                    "birthday": "2015-02-02T06:04:00.000Z",
+                                    "createdAt": "2024-02-19T09:35:22.430Z",
+                                    "updatedAt": "2024-02-19T09:35:22.430Z"
+                                }]}
+      },
+
+      "DELETE /api/exampletable/:exampletable_id": {
+        "description": "deletes a single record from exampletable by record Id",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status":"Deleted!",
+                            "message": "Successfully deleted a record!"}
+      },
+
+      "POST /api/exampletable": {
+        "description": "add a record to exmapletable",
+        "queries": [],
+        "requestBody": {"counter": 18,
+                        "name":"Sarah",
+                        "birthday": "2012-02-02T06:04:00Z"},
+        "exampleResponse": {"status":"Created!",
+                            "message": "Successfully created a record!"}
+      },
+
+      "PATCH /api/exampletable/:exampletable_id": {
+        "description": "update a record in exmapletable by record Id",
+        "queries": [],
+        "requestBody": {"counter": 77,
+                        "name":"Peter",
+                        "birthday": "2011-01-01T06:04:00Z"},
+        "exampleResponse": {"status":"Updated!",
+                            "message": "Successfully updated a record!"}
+      }
+}
