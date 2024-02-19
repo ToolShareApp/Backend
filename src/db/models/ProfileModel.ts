@@ -42,7 +42,8 @@ export class Profile extends Model {
     username!:string
 
     @Column ({
-        type: DataType.BOOLEAN, //should be bool and default to false - troubleshoot
+        type: DataType.BOOLEAN,
+        defaultValue: false,
         field: Profile.PROFILE_VERIFIED
     })
     verified!:number
@@ -62,25 +63,27 @@ export class Profile extends Model {
 
     @Column ({
         type: DataType.FLOAT,
+        allowNull: false,
         field: Profile.PROFILE_LATITUDE
     })
     latitude!:number
 
     @Column ({
         type: DataType.FLOAT,
+        allowNull: false,
         field: Profile.PROFILE_LONGITUDE
     })
     longitude!:number
 
     @Column ({
         type: DataType.INTEGER,
+        defaultValue: 5,        
         field: Profile.PROFILE_SEARCH_RADIUS
     })
     search_radius!:number
 
     @Column ({
         type: DataType.STRING,
-        allowNull: false,
         field: Profile.PROFILE_PICTURE_URL
     })
     picture_url!:string

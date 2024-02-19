@@ -73,5 +73,93 @@
                         "birthday": "2011-01-01T06:04:00Z"},
         "exampleResponse": {"status":"Updated!",
                             "message": "Successfully updated a record!"}
+      },
+
+      "GET /api/profile": {
+        "description": "all data from the profile table",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "profile_id": 2,
+                                    "user_auth_id": 1,
+                                    "username": "Sarah",
+                                    "verified": false,
+                                    "display_name": "Sarah Sarah",
+                                    "bio": "",
+                                    "latitude": -33.68595,
+                                    "longitude": 144.25855,
+                                    "search_radius": 15,
+                                    "picture_url": "",
+                                    "createdAt": "2024-02-19T21:03:51.595Z",
+                                    "updatedAt": "2024-02-19T21:03:51.595Z"
+                                },
+                                {
+                                    "profile_id": 3,
+                                    "user_auth_id": 1,
+                                    "username": "Paul",
+                                    "verified": false,
+                                    "display_name": "Paul is my name",
+                                    "bio": "",
+                                    "latitude": 39.58557,
+                                    "longitude": -116.14166,
+                                    "search_radius": 15,
+                                    "picture_url": "",
+                                    "createdAt": "2024-02-19T21:22:07.727Z",
+                                    "updatedAt": "2024-02-19T21:22:07.727Z"
+                                }
+                            ]}
+      },
+
+      "GET /api/profile/:profile_id": {
+        "description": "returns single record from profile table by record id",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "profile_id": 3,
+                                    "user_auth_id": 1,
+                                    "username": "Paul",
+                                    "verified": false,
+                                    "display_name": "Paul is my name",
+                                    "bio": "",
+                                    "latitude": 39.58557,
+                                    "longitude": -116.14166,
+                                    "search_radius": 15,
+                                    "picture_url": "",
+                                    "createdAt": "2024-02-19T21:22:07.727Z",
+                                    "updatedAt": "2024-02-19T21:22:07.727Z"
+                                }]}
+      },
+
+      "DELETE /api/profile/:profile_id": {
+        "description": "deletes a single record from profile table by record Id",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status":"Deleted!",
+                            "message": "Successfully deleted a record!"}
+      },
+
+      "POST /api/profile": {
+        "description": "add a record to profile table",
+        "queries": [],
+        "requestBody":{"user_auth_id": 1,
+                        "username": "Sarah",
+                        "verified": false,
+                        "display_name": "Sarah Sarah",
+                        "bio": "",
+                        "latitude": -33.68595,
+                        "longitude": 144.25855,
+                        "search_radius": 15,
+                        "picture_url": ""},
+        "minimumRequestBody":{"username": "Sarah",
+                            "latitude": -33.68595,
+                            "longitude": 144.25855},
+        "exampleResponse": {"status":"Created!",
+                            "message": "Successfully created a record!"}
       }
 }

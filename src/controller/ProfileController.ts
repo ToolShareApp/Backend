@@ -7,15 +7,15 @@ class ProfileController {
     async insert(req:Request, res:Response){
         try{
             const new_Profile_row  = new Profile();
-            new_Profile_row.user_auth_id= 1;
+            new_Profile_row.user_auth_id= req.body.user_auth_id ? req.body.user_auth_id : 1;
             new_Profile_row.username = req.body.username;
-            new_Profile_row.verified = 0;
-            new_Profile_row.display_name = req.body.display_name;
-            new_Profile_row.bio = "";
+            if (req.body.verified) {new_Profile_row.verified = req.body.verified};
+            new_Profile_row.display_name= req.body.display_name ? req.body.display_name : req.body.username;
+            new_Profile_row.bio = req.body.bio ? req.body.bio : "";
             new_Profile_row.longitude= req.body.longitude;
             new_Profile_row.latitude= req.body.latitude;
-            new_Profile_row.search_radius= req.body.search_radius;
-            new_Profile_row.picture_url= "";
+            if (req.body.search_radius) {new_Profile_row.search_radius = req.body.search_radius};
+            new_Profile_row.picture_url = req.body.picture_url ? req.body.picture_url : "";
 
 
             await new ProfileQuery().save(new_Profile_row);
