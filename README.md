@@ -30,7 +30,7 @@ If you see a message `Postgres alive` in the terminal, then it has worked. You a
 
 ## Deployment
 
-1. <span style="color:red">**Revert all changes in the Database file**</span>. It is best done by discarding changes for `Database.ts` file in the source control screen.
+1. <span style="color:red">**Revert changes to the host in the Database file**</span>. If you have not added any new models, then reverting changes is best done by discarding changes for `Database.ts` file in the source control screen.
 
 <img src="https://i.imgur.com/nIFKlwM.png" alt="local DB setup" width="500"/>
 

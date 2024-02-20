@@ -57,7 +57,7 @@ export class ProfileQuery implements IProfileQuery {
            const Profile_row =  await Profile.findOne(
                 {
                     where: {
-                        profile_id: record_id,
+                        username: record_id,
                     }
                 })
                 if(!Profile_row){
