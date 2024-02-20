@@ -85,7 +85,7 @@
                                 {
                                     "profile_id": 2,
                                     "user_auth_id": 1,
-                                    "username": "Sarah",
+                                    "email": "Sarah@domain.com",
                                     "verified": false,
                                     "display_name": "Sarah Sarah",
                                     "bio": "",
@@ -99,7 +99,7 @@
                                 {
                                     "profile_id": 3,
                                     "user_auth_id": 1,
-                                    "username": "Paul",
+                                    "email": "Paul@domain.com",
                                     "verified": false,
                                     "display_name": "Paul is my name",
                                     "bio": "",
@@ -113,8 +113,8 @@
                             ]}
       },
 
-      "GET /api/profile/:profile_id": {
-        "description": "returns single record from profile table by record id",
+      "GET /api/profile/:email": {
+        "description": "returns single record from profile table by email address",
         "queries": [],
         "requestBody": {},
         "exampleResponse": {"status": "OK!",
@@ -123,7 +123,7 @@
                                 {
                                     "profile_id": 3,
                                     "user_auth_id": 1,
-                                    "username": "Paul",
+                                    "email": "Paul@domain.com",
                                     "verified": false,
                                     "display_name": "Paul is my name",
                                     "bio": "",
@@ -148,7 +148,7 @@
         "description": "add a record to profile table",
         "queries": [],
         "requestBody":{"user_auth_id": 1,
-                        "username": "Sarah",
+                        "email": "Sarah@domain.com",
                         "verified": false,
                         "display_name": "Sarah Sarah",
                         "bio": "",
@@ -156,7 +156,7 @@
                         "longitude": 144.25855,
                         "search_radius": 15,
                         "picture_url": ""},
-        "minimumRequestBody":{"username": "Sarah, this could also be an email"},
+        "minimumRequestBody":{"email": "Sarah@domain.com"},
         "exampleResponse": {"status":"Created!",
                             "message": "Successfully created a record!"}
       }

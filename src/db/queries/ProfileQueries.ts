@@ -3,7 +3,7 @@ import { Profile } from "../models/ProfileModel";
 interface IProfileQuery {
     save(data:Profile):Promise<void>;
     delete(id:number):Promise<void>;
-    retrieveById(id:number):Promise<Profile>;
+    retrieveById(id:string):Promise<Profile>;
     retrieveAll():Promise<Profile[]>;
 }
 
@@ -16,7 +16,7 @@ export class ProfileQuery implements IProfileQuery {
                 {
                     profile_id: data.profile_id,
                     user_auth_id: data.user_auth_id,
-                    username : data.username,
+                    email : data.email,
                     verified : data.verified,
                     display_name : data.display_name,
                     bio : data.bio,
@@ -52,12 +52,13 @@ export class ProfileQuery implements IProfileQuery {
         }
     }
 
-    async retrieveById(record_id:number):Promise<Profile>{
+    async retrieveById(record_id:string):Promise<Profile>{
         try {
+            console.log()
            const Profile_row =  await Profile.findOne(
                 {
                     where: {
-                        username: record_id,
+                        email: record_id,
                     }
                 })
                 if(!Profile_row){

@@ -10,7 +10,7 @@ export class Profile extends Model {
     public static PROFILE_TABLE_NAME  = "profile" as string;
     public static PROFILE_USER_ID  = "profile_id" as string;
     public static PROFILE_USER_AUTH_ID  = "user_auth_id" as string;
-    public static PROFILE_USERNAME  = "username" as string;
+    public static PROFILE_EMAIL  = "email" as string;
     public static PROFILE_VERIFIED = "verified" as string;
     public static PROFILE_DISPLAY_NAME  = "display_name" as string;
     public static PROFILE_BIO  = "bio" as string;
@@ -37,9 +37,9 @@ export class Profile extends Model {
     @Column ({
         type: DataType.STRING,
         allowNull: false,
-        field: Profile.PROFILE_USERNAME
+        field: Profile.PROFILE_EMAIL
     })
-    username!:string
+    email!:string
 
     @Column ({
         type: DataType.BOOLEAN,

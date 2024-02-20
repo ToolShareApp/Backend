@@ -8,9 +8,9 @@ class ProfileController {
         try{
             const new_Profile_row  = new Profile();
             new_Profile_row.user_auth_id= req.body.user_auth_id ? req.body.user_auth_id : 1;
-            new_Profile_row.username = req.body.username;
+            new_Profile_row.email = req.body.email;
             if (req.body.verified) {new_Profile_row.verified = req.body.verified};
-            new_Profile_row.display_name= req.body.display_name ? req.body.display_name : req.body.username;
+            new_Profile_row.display_name= req.body.display_name ? req.body.display_name : "";
             new_Profile_row.bio = req.body.bio ? req.body.bio : "";
             new_Profile_row.longitude= req.body.longitude ? req.body.longitude : 0;
             new_Profile_row.latitude= req.body.latitude ? req.body.latitude : 0;
@@ -55,7 +55,7 @@ class ProfileController {
 
     async selectWhereId (req:Request, res:Response){
         try{
-            const id = parseInt(req.params["profile_id"]);
+            const id = req.params["profile_id"];
             const new_Profile_row  = await new ProfileQuery().retrieveById(id);
 
             res.status(201).json({
