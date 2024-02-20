@@ -156,9 +156,7 @@
                         "longitude": 144.25855,
                         "search_radius": 15,
                         "picture_url": ""},
-        "minimumRequestBody":{"username": "Sarah",
-                            "latitude": -33.68595,
-                            "longitude": 144.25855},
+        "minimumRequestBody":{"username": "Sarah, this could also be an email"},
         "exampleResponse": {"status":"Created!",
                             "message": "Successfully created a record!"}
       }
