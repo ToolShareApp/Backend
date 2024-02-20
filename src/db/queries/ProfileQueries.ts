@@ -3,7 +3,8 @@ import { Profile } from "../models/ProfileModel";
 interface IProfileQuery {
     save(data:Profile):Promise<void>;
     delete(id:number):Promise<void>;
-    retrieveById(id:string):Promise<Profile>;
+    retrieveById(id:number):Promise<Profile[]>;
+    retrieveByEmail(id:string):Promise<Profile[]>;
     retrieveAll():Promise<Profile[]>;
 }
 
@@ -52,21 +53,31 @@ export class ProfileQuery implements IProfileQuery {
         }
     }
 
-    async retrieveById(record_id:string):Promise<Profile>{
+    async retrieveByEmail(email:string):Promise<Profile[]>{
         try {
             console.log()
-           const Profile_row =  await Profile.findOne(
+           return await Profile.findAll(
                 {
                     where: {
-                        email: record_id,
+                        email: email,
                     }
                 })
-                if(!Profile_row){
-                    throw new Error("Could not find the record")
-                }
-            
-            return Profile_row
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("SELECT FROM WHERE statement did not work ")
+        }
+    }
 
+    async retrieveById(record_id:number):Promise<Profile[]>{
+        try {
+            console.log()
+            return await Profile.findAll(
+                {
+                    where: {
+                        profile_id: record_id,
+                    }
+                })
         }
         catch(error){
             console.log(error)

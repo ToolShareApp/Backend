@@ -113,8 +113,8 @@
                             ]}
       },
 
-      "GET /api/profile/:email": {
-        "description": "returns single record from profile table by email address",
+      "GET /api/profile/:profile_id": {
+        "description": "returns single record from profile table by profile id",
         "queries": [],
         "requestBody": {},
         "exampleResponse": {"status": "OK!",
@@ -134,14 +134,38 @@
                                     "createdAt": "2024-02-19T21:22:07.727Z",
                                     "updatedAt": "2024-02-19T21:22:07.727Z"
                                 }]}
-      },
 
+      },
+      
       "DELETE /api/profile/:profile_id": {
         "description": "deletes a single record from profile table by record Id",
         "queries": [],
         "requestBody": {},
         "exampleResponse": {"status":"Deleted!",
                             "message": "Successfully deleted a record!"}
+      },
+
+      "GET /api/profile/email/:email": {
+        "description": "returns a single record from profile table by email address",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "profile_id": 3,
+                                    "user_auth_id": 1,
+                                    "email": "Paul@domain.com",
+                                    "verified": false,
+                                    "display_name": "Paul is my name",
+                                    "bio": "",
+                                    "latitude": 39.58557,
+                                    "longitude": -116.14166,
+                                    "search_radius": 15,
+                                    "picture_url": "",
+                                    "createdAt": "2024-02-19T21:22:07.727Z",
+                                    "updatedAt": "2024-02-19T21:22:07.727Z"
+                                }]}
       },
 
       "POST /api/profile": {
