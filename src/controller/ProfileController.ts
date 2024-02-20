@@ -55,8 +55,26 @@ class ProfileController {
 
     async selectWhereId (req:Request, res:Response){
         try{
-            const id = req.params["profile_id"];
+            const id = parseInt(req.params["profile_id"]);
             const new_Profile_row  = await new ProfileQuery().retrieveById(id);
+
+            res.status(201).json({
+                status:"OK!",
+                message: "Here is your data:",
+                data:new_Profile_row
+            });
+        } catch (err) {
+            res.status(500).json({
+                status:"Internal Server Error!",
+                message: "Internal Server Error!"
+            })
+        }
+    }
+
+    async selectWhereEmail (req:Request, res:Response){
+        try{
+            const email = req.params["email"];
+            const new_Profile_row  = await new ProfileQuery().retrieveByEmail(email);
 
             res.status(201).json({
                 status:"OK!",

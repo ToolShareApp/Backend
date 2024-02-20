@@ -9,6 +9,7 @@ class ProfileRoutes extends BaseRoutes{
         this.router.post("", validate(CreateProfileSchema), ProfileController.insert)
         this.router.delete("/:profile_id", ProfileController.delete)
         this.router.get("/:profile_id", ProfileController.selectWhereId)
+        this.router.get("/email/:email", ProfileController.selectWhereEmail)
         this.router.get("", ProfileController.selectAll)
     }
 }

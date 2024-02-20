@@ -37,6 +37,7 @@ export class Profile extends Model {
     @Column ({
         type: DataType.STRING,
         allowNull: false,
+        unique:true,
         field: Profile.PROFILE_EMAIL
     })
     email!:string
