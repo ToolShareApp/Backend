@@ -86,6 +86,7 @@ You should now be all set up for work. You can use your favourite API platform t
 
 1. IF you changed any of the models and deleted them prior to re-deployment, you will need to reseed those models with data. Copy-paste insert statements from `./src/db/seed_prod` folders for the respective models into the ElephantSQL Browser and execute them.
 
+1. Shout in the #backend-status channel that the hosted DB is live again.
 
 ## Accessing the hosted DB directly
 

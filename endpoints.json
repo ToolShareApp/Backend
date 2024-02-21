@@ -56,7 +56,7 @@
       },
 
       "POST /api/exampletable": {
-        "description": "add a record to exmapletable",
+        "description": "adds a record to exmapletable",
         "queries": [],
         "requestBody": {"counter": 18,
                         "name":"Sarah",
@@ -66,7 +66,7 @@
       },
 
       "PATCH /api/exampletable/:exampletable_id": {
-        "description": "update a record in exmapletable by record Id",
+        "description": "updates a record in exmapletable by record Id",
         "queries": [],
         "requestBody": {"counter": 77,
                         "name":"Peter",
@@ -76,7 +76,7 @@
       },
 
       "GET /api/profile": {
-        "description": "all data from the profile table",
+        "description": "returns all data from the profile table",
         "queries": [],
         "requestBody": {},
         "exampleResponse": {"status": "OK!",
@@ -114,7 +114,7 @@
       },
 
       "GET /api/profile/:profile_id": {
-        "description": "returns single record from profile table by profile id",
+        "description": "returns single record from profile table by profile id, if exists, otherwise returns an empty array",
         "queries": [],
         "requestBody": {},
         "exampleResponse": {"status": "OK!",
@@ -146,7 +146,7 @@
       },
 
       "GET /api/profile/email/:email": {
-        "description": "returns a single record from profile table by email address",
+        "description": "returns a single record from profile table by email address, if exists, otherwise returns an empty array",
         "queries": [],
         "requestBody": {},
         "exampleResponse": {"status": "OK!",
@@ -169,7 +169,7 @@
       },
 
       "POST /api/profile": {
-        "description": "add a record to profile table",
+        "description": "adds a record to profile table",
         "queries": [],
         "requestBody":{"user_auth_id": 1,
                         "email": "Sarah@domain.com",
@@ -183,5 +183,118 @@
         "minimumRequestBody":{"email": "Sarah@domain.com"},
         "exampleResponse": {"status":"Created!",
                             "message": "Successfully created a record!"}
+      },
+
+      "GET /api/listing": {
+        "description": "returns all data from the listing table",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "listing_id": 2,
+                                    "owner_id": 504,
+                                    "tool": "Chainsaw",
+                                    "category": "Scary Things",
+                                    "subcategory": "Loud scary things",
+                                    "deposit_required": false,
+                                    "deposit_amount": 0,
+                                    "description": "",
+                                    "photo_url": "",
+                                    "createdAt": "2024-02-21T15:45:55.613Z",
+                                    "updatedAt": "2024-02-21T15:45:55.613Z"
+                                },
+                                {
+                                    "listing_id": 3,
+                                    "owner_id": 2,
+                                    "tool": "Big Old Hammer",
+                                    "category": "Hand Tools",
+                                    "subcategory": "Hammers",
+                                    "deposit_required": false,
+                                    "deposit_amount": 0,
+                                    "description": "",
+                                    "photo_url": "",
+                                    "createdAt": "2024-02-21T15:46:30.334Z",
+                                    "updatedAt": "2024-02-21T15:46:30.334Z"
+                                }
+                            ]}
+      },
+
+      "GET /api/listing/:listing_id": {
+        "description": "returns single record from listing table by listing id, if exists, otherwise returns an empty array",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "listing_id": 3,
+                                    "owner_id": 2,
+                                    "tool": "Big Old Hammer",
+                                    "category": "Hand Tools",
+                                    "subcategory": "Hammers",
+                                    "deposit_required": false,
+                                    "deposit_amount": 0,
+                                    "description": "",
+                                    "photo_url": "",
+                                    "createdAt": "2024-02-21T15:46:30.334Z",
+                                    "updatedAt": "2024-02-21T15:46:30.334Z"
+                                }]}
+
+      },
+      
+      "DELETE /api/listing/:listing_id": {
+        "description": "deletes a single record from listing table by record Id",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status":"Deleted!",
+                            "message": "Successfully deleted a record!"}
+      },
+
+      "GET /api/listing/owner/:owner_id": {
+        "description": "returns a single record from listing table by owner id, if exists, otherwise returns an empty array",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "listing_id": 3,
+                                    "owner_id": 2,
+                                    "tool": "Big Old Hammer",
+                                    "category": "Hand Tools",
+                                    "subcategory": "Hammers",
+                                    "deposit_required": false,
+                                    "deposit_amount": 0,
+                                    "description": "",
+                                    "photo_url": "",
+                                    "createdAt": "2024-02-21T15:46:30.334Z",
+                                    "updatedAt": "2024-02-21T15:46:30.334Z"
+                                }]}
+      },
+
+      "POST /api/listing": {
+        "description": "add a record to listing table",
+        "queries": [],
+        "requestBody":{
+                        "owner_id": 2,
+                        "tool": "Big Old Hammer",
+                        "category": "Hand Tools",
+                        "subcategory": "Hammers",
+                        "deposit_required": false,
+                        "deposit_amount": 0,
+                        "description": "",
+                        "photo_url": ""
+        },
+        "minimumRequestBody":{  "owner_id": 2,
+                                "tool": "Big Old Hammer",
+                                "category": "Hand Tools",
+                                "subcategory": "Hammers"
+                            },
+        "exampleResponse": {"status":"Created!",
+                            "message": "Successfully created a record!"}
       }
+
+
 }
