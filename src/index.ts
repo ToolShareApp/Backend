@@ -3,6 +3,7 @@ import Database from "./config/Database";
 import exampletableRouter from "./routers/ExampletableRouter";
 import fs from "fs/promises";
 import ProfileRouter from "./routers/ProfileRouter";
+import ListingRouter from "./routers/ListingRouter";
 
 class App {
   public app: Application;
@@ -53,6 +54,7 @@ class App {
     });
     this.app.use("/api/docs", this.readEndpoints);
     this.app.use("/api/profile", ProfileRouter);
+    this.app.use("/api/listing", ListingRouter);
     this.app.use("/api/exampletable", exampletableRouter);
   }
 }

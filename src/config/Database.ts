@@ -2,6 +2,7 @@ import { Sequelize } from "sequelize-typescript";
 import * as dotenv from "dotenv";
 import { Exampletable } from "../db/models/ExampletableModel";
 import { Profile } from "../db/models/ProfileModel";
+import { Listing } from "../db/models/ListingModel";
 
 dotenv.config()
 
@@ -24,10 +25,10 @@ class Database {
         {
             database: this.POSTGRES_DB,
             // Comment out line below before git commit, uncomment when working locally
-            //host: this.POSTGRES_HOST,
+            // host: this.POSTGRES_HOST,
             port: this.POSTGRES_PORT,
             dialect: "postgres",
-            models:[Exampletable, Profile],
+            models:[Exampletable, Profile, Listing],
         })
 
         await this.sequelize.authenticate()

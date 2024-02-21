@@ -47,7 +47,7 @@ export class Profile extends Model {
         defaultValue: false,
         field: Profile.PROFILE_VERIFIED
     })
-    verified!:number
+    verified!:number//this should be bool, need to change and test
 
     @Column ({
         type: DataType.STRING,
