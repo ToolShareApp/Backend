@@ -9,7 +9,7 @@ export class Profile extends Model {
 
     public static PROFILE_TABLE_NAME  = "profile" as string;
     public static PROFILE_USER_ID  = "profile_id" as string;
-    public static PROFILE_USER_AUTH_ID  = "user_auth_id" as string;
+    public static PROFILE_PASSWORD  = "password" as string;
     public static PROFILE_EMAIL  = "email" as string;
     public static PROFILE_VERIFIED = "verified" as string;
     public static PROFILE_DISPLAY_NAME  = "display_name" as string;
@@ -29,10 +29,11 @@ export class Profile extends Model {
     profile_id!:number
 
     @Column ({
-        type: DataType.INTEGER,
-        field: Profile.PROFILE_USER_AUTH_ID
+        type: DataType.STRING,
+        allowNull: false,
+        field: Profile.PROFILE_PASSWORD
     })
-    user_auth_id!:number
+    password!:string
 
     @Column ({
         type: DataType.STRING,
