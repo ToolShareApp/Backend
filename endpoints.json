@@ -84,7 +84,7 @@
                             "data": [
                                 {
                                     "profile_id": 2,
-                                    "user_auth_id": 1,
+                                    "password":"passowrd",
                                     "email": "Sarah@domain.com",
                                     "verified": false,
                                     "display_name": "Sarah Sarah",
@@ -98,7 +98,7 @@
                                 },
                                 {
                                     "profile_id": 3,
-                                    "user_auth_id": 1,
+                                    "password":"passowrd",
                                     "email": "Paul@domain.com",
                                     "verified": false,
                                     "display_name": "Paul is my name",
@@ -122,7 +122,7 @@
                             "data": [
                                 {
                                     "profile_id": 3,
-                                    "user_auth_id": 1,
+                                    "password":"passowrd",
                                     "email": "Paul@domain.com",
                                     "verified": false,
                                     "display_name": "Paul is my name",
@@ -154,7 +154,29 @@
                             "data": [
                                 {
                                     "profile_id": 3,
-                                    "user_auth_id": 1,
+                                    "password":"passowrd",
+                                    "email": "Paul@domain.com",
+                                    "verified": false,
+                                    "display_name": "Paul is my name",
+                                    "bio": "",
+                                    "latitude": 39.58557,
+                                    "longitude": -116.14166,
+                                    "search_radius": 15,
+                                    "picture_url": "",
+                                    "createdAt": "2024-02-19T21:22:07.727Z",
+                                    "updatedAt": "2024-02-19T21:22:07.727Z"
+                                }]}
+      },
+      "GET /api/profile/auth": {
+        "description": "returns a single record from profile table by email address, if exists, otherwise returns an empty array",
+        "queries": ["email", "password"],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "profile_id": 3,
+                                    "password":"passowrd",
                                     "email": "Paul@domain.com",
                                     "verified": false,
                                     "display_name": "Paul is my name",
@@ -171,7 +193,7 @@
       "POST /api/profile": {
         "description": "adds a record to profile table",
         "queries": [],
-        "requestBody":{"user_auth_id": 1,
+        "requestBody":{"password":"passowrd",
                         "email": "Sarah@domain.com",
                         "verified": false,
                         "display_name": "Sarah Sarah",

@@ -5,18 +5,17 @@ interface IProfileQuery {
     delete(id:number):Promise<void>;
     retrieveById(id:number):Promise<Profile[]>;
     retrieveByEmail(id:string):Promise<Profile[]>;
+    retrieveByCredentials(email:string, password:string):Promise<Profile>;
     retrieveAll():Promise<Profile[]>;
 }
 
 export class ProfileQuery implements IProfileQuery {
    async save(data:Profile):Promise<void>{
         try {
-            console.log("here is the data")
-            console.log(data)
             await Profile.create(
                 {
                     profile_id: data.profile_id,
-                    user_auth_id: data.user_auth_id,
+                    password: data.password,
                     email : data.email,
                     verified : data.verified,
                     display_name : data.display_name,
@@ -55,7 +54,6 @@ export class ProfileQuery implements IProfileQuery {
 
     async retrieveByEmail(email:string):Promise<Profile[]>{
         try {
-            console.log()
            return await Profile.findAll(
                 {
                     where: {
@@ -71,7 +69,6 @@ export class ProfileQuery implements IProfileQuery {
 
     async retrieveById(record_id:number):Promise<Profile[]>{
         try {
-            console.log()
             return await Profile.findAll(
                 {
                     where: {
@@ -82,6 +79,26 @@ export class ProfileQuery implements IProfileQuery {
         catch(error){
             console.log(error)
             throw new Error("SELECT FROM WHERE statement did not work ")
+        }
+    }
+
+    async retrieveByCredentials(email:any, password:any):Promise<Profile>{
+        try {
+            const profile_row = await Profile.findOne(
+                {
+                    where: {
+                        email: email,
+                        password:password
+                    }
+                })
+                if(!profile_row){
+                    throw new Error("Could not find the record")
+                }
+            return profile_row
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("SELECT FROM WHERE statement did not work")
         }
     }
 

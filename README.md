@@ -36,7 +36,7 @@ Please follow these instructions when setting this repo up to work locally or de
 
 1. IF you ran the setup test (see above), then you will need to re-seed your local database. To do this, in another terminal window (not the one where server is running) run the following command:
     ```
-    psql -f ./src/db/seed/dev/ProfileSeed.sql
+    psql -f ./src/db/seed_dev/ProfileSeed.sql
     ```
     You will see many `INSERT 0 1` statements appear in the console.
 

@@ -7,7 +7,7 @@ class ProfileController {
     async insert(req:Request, res:Response){
         try{
             const new_Profile_row  = new Profile();
-            new_Profile_row.user_auth_id= req.body.user_auth_id ? req.body.user_auth_id : 1;
+            new_Profile_row.password= req.body.password ? req.body.password : "password";
             new_Profile_row.email = req.body.email;
             if (req.body.verified) {new_Profile_row.verified = req.body.verified};
             new_Profile_row.display_name= req.body.display_name ? req.body.display_name : "";
@@ -86,6 +86,34 @@ class ProfileController {
                 status:"Internal Server Error!",
                 message: "Internal Server Error!"
             })
+        }
+    }
+
+    async selectWhereCredentials (req:Request, res:Response){
+        try{
+            const {email} = req.query;
+            const {password} = req.query;
+            const new_Profile_row  = await new ProfileQuery().retrieveByCredentials(email, password);
+  
+
+            res.status(201).json({
+                status:"OK!",
+                message: "Here is your data:",
+                data:new_Profile_row
+            });
+        } catch (err:any) {
+            if (err.message==="SELECT FROM WHERE statement did not work"){
+                res.status(401).json({
+                    status:"Unauthorised",
+                    message: "incorrect username or password"})
+            
+            }
+            else {
+                res.status(500).json({
+                    status:"Internal Server Error!",
+                    message: "Internal Server Error!"
+                })
+            }
         }
     }
 
