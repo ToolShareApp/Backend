@@ -70,7 +70,7 @@ export class Listing extends Model {
     deposit_amount!:number
 
     @Column ({
-        type: DataType.STRING,
+        type: DataType.STRING(1000),
         allowNull: false,
         field: Listing.LISTING_DESCRIPTION
     })
