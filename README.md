@@ -37,6 +37,7 @@ Please follow these instructions when setting this repo up to work locally or de
 1. IF you ran the setup test (see above), then you will need to re-seed your local database. To do this, in another terminal window (not the one where server is running) run the following command:
     ```
     psql -f ./src/db/seed_dev/ProfileSeed.sql
+    psql -f ./src/db/seed_dev/ListingSeed.sql
     ```
     You will see many `INSERT 0 1` statements appear in the console.
 
@@ -84,7 +85,7 @@ You should now be all set up for work. You can use your favourite API platform t
 
 1. You are now running the hosted backend on: `http://nc-toolshare-backend.onrender.com/` Try to connect to this address, it should say `welcome home`. Docs are here: http://nc-toolshare-backend.onrender.com/api/docs If you use Insomnia, there is a file named `Insomnia_endpoints.json` in the repo that you can import into Insomnia for a set of pre-defined calls to all available endpoints (use `Hosted` folder).
 
-1. IF you changed any of the models and deleted them prior to re-deployment, you will need to reseed those models with data. Copy-paste insert statements from `./src/db/seed_prod` folders for the respective models into the ElephantSQL Browser and execute them.
+1. IF you changed any of the models and deleted them prior to re-deployment, you will need to reseed those models with data. Copy-paste insert statements from `./src/db/seed_prod` folder for the respective models into the ElephantSQL Browser and execute them.
 
 1. Shout in the #backend-status channel that the hosted DB is live again.
 

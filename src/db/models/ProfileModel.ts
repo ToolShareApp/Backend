@@ -58,7 +58,7 @@ export class Profile extends Model {
     display_name!:string
 
     @Column ({
-        type: DataType.STRING,
+        type: DataType.STRING(1000),
         field: Profile.PROFILE_BIO
     })
     bio!:string

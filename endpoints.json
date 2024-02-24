@@ -87,12 +87,12 @@
                                     "password":"passowrd",
                                     "email": "Sarah@domain.com",
                                     "verified": false,
-                                    "display_name": "Sarah Sarah",
-                                    "bio": "",
+                                    "display_name": "Sarah Smith",
+                                    "bio": "My name is Sarah and I like woodworking",
                                     "latitude": -33.68595,
                                     "longitude": 144.25855,
                                     "search_radius": 15,
-                                    "picture_url": "",
+                                    "picture_url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Avatar-gwen.jpg",
                                     "createdAt": "2024-02-19T21:03:51.595Z",
                                     "updatedAt": "2024-02-19T21:03:51.595Z"
                                 },
@@ -102,11 +102,11 @@
                                     "email": "Paul@domain.com",
                                     "verified": false,
                                     "display_name": "Paul is my name",
-                                    "bio": "",
+                                    "bio": "I am Paul, please take a look at my listings",
                                     "latitude": 39.58557,
                                     "longitude": -116.14166,
                                     "search_radius": 15,
-                                    "picture_url": "",
+                                    "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Alxira5_Avatar.svg/640px-Alxira5_Avatar.svg.png",
                                     "createdAt": "2024-02-19T21:22:07.727Z",
                                     "updatedAt": "2024-02-19T21:22:07.727Z"
                                 }
@@ -126,15 +126,14 @@
                                     "email": "Paul@domain.com",
                                     "verified": false,
                                     "display_name": "Paul is my name",
-                                    "bio": "",
+                                    "bio": "I am Paul, please take a look at my listings",
                                     "latitude": 39.58557,
                                     "longitude": -116.14166,
                                     "search_radius": 15,
-                                    "picture_url": "",
+                                    "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Alxira5_Avatar.svg/640px-Alxira5_Avatar.svg.png",
                                     "createdAt": "2024-02-19T21:22:07.727Z",
                                     "updatedAt": "2024-02-19T21:22:07.727Z"
                                 }]}
-
       },
       
       "DELETE /api/profile/:profile_id": {
@@ -158,17 +157,18 @@
                                     "email": "Paul@domain.com",
                                     "verified": false,
                                     "display_name": "Paul is my name",
-                                    "bio": "",
+                                    "bio": "I am Paul, please take a look at my listings",
                                     "latitude": 39.58557,
                                     "longitude": -116.14166,
                                     "search_radius": 15,
-                                    "picture_url": "",
+                                    "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Alxira5_Avatar.svg/640px-Alxira5_Avatar.svg.png",
                                     "createdAt": "2024-02-19T21:22:07.727Z",
                                     "updatedAt": "2024-02-19T21:22:07.727Z"
                                 }]}
       },
+
       "GET /api/profile/auth": {
-        "description": "returns a single record from profile table by email address, if exists, otherwise returns an empty array",
+        "description": "returns a single record from profile table by email address and password in the query. If such record does not exist this endpoint returns an empty array",
         "queries": ["email", "password"],
         "requestBody": {},
         "exampleResponse": {"status": "OK!",
@@ -180,11 +180,11 @@
                                     "email": "Paul@domain.com",
                                     "verified": false,
                                     "display_name": "Paul is my name",
-                                    "bio": "",
+                                    "bio": "I am Paul, please take a look at my listings",
                                     "latitude": 39.58557,
                                     "longitude": -116.14166,
                                     "search_radius": 15,
-                                    "picture_url": "",
+                                    "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Alxira5_Avatar.svg/640px-Alxira5_Avatar.svg.png",
                                     "createdAt": "2024-02-19T21:22:07.727Z",
                                     "updatedAt": "2024-02-19T21:22:07.727Z"
                                 }]}
@@ -207,6 +207,20 @@
                             "message": "Successfully created a record!"}
       },
 
+      "PATCH /api/profile/:profile_id": {
+        "description": "updates a record in profile table by profile id. All properties in the body are optional, the properties that are not sent will retain existing values",
+        "queries": [],
+        "requestBody":{"verified": true,
+                        "display_name": "Sarah Smith",
+                        "bio": "I love cats",
+                        "latitude": 54,
+                        "longitude": 2,
+                        "search_radius": 15,
+                        "picture_url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Avatar-gwen.jpg"},
+        "exampleResponse": {"status":"Updated!",
+                            "message": "Successfully updated a record!"}
+      },
+
       "GET /api/listing": {
         "description": "returns all data from the listing table",
         "queries": [],
@@ -222,8 +236,8 @@
                                     "subcategory": "Loud scary things",
                                     "deposit_required": false,
                                     "deposit_amount": 0,
-                                    "description": "",
-                                    "photo_url": "",
+                                    "description": "You can use this to cut down a large tree and to scare people",
+                                    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Lhalhiklhik%E9%8B%B8%E5%AD%90.jpg/640px-Lhalhiklhik%E9%8B%B8%E5%AD%90.jpg",
                                     "createdAt": "2024-02-21T15:45:55.613Z",
                                     "updatedAt": "2024-02-21T15:45:55.613Z"
                                 },
@@ -235,8 +249,8 @@
                                     "subcategory": "Hammers",
                                     "deposit_required": false,
                                     "deposit_amount": 0,
-                                    "description": "",
-                                    "photo_url": "",
+                                    "description": "Are you worthy to pick it up?",
+                                    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Edsring_och_hammare.jpg/640px-Edsring_och_hammare.jpg",
                                     "createdAt": "2024-02-21T15:46:30.334Z",
                                     "updatedAt": "2024-02-21T15:46:30.334Z"
                                 }
@@ -258,8 +272,8 @@
                                     "subcategory": "Hammers",
                                     "deposit_required": false,
                                     "deposit_amount": 0,
-                                    "description": "",
-                                    "photo_url": "",
+                                    "description": "Are you worthy to pick it up?",
+                                    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Edsring_och_hammare.jpg/640px-Edsring_och_hammare.jpg",
                                     "createdAt": "2024-02-21T15:46:30.334Z",
                                     "updatedAt": "2024-02-21T15:46:30.334Z"
                                 }]}
@@ -275,7 +289,7 @@
       },
 
       "GET /api/listing/owner/:owner_id": {
-        "description": "returns a single record from listing table by owner id, if exists, otherwise returns an empty array",
+        "description": "returns all record from listing table for the given owner_id",
         "queries": [],
         "requestBody": {},
         "exampleResponse": {"status": "OK!",
@@ -289,8 +303,8 @@
                                     "subcategory": "Hammers",
                                     "deposit_required": false,
                                     "deposit_amount": 0,
-                                    "description": "",
-                                    "photo_url": "",
+                                    "description": "Are you worthy to pick it up?",
+                                    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Edsring_och_hammare.jpg/640px-Edsring_och_hammare.jpg",
                                     "createdAt": "2024-02-21T15:46:30.334Z",
                                     "updatedAt": "2024-02-21T15:46:30.334Z"
                                 }]}
@@ -317,6 +331,4 @@
         "exampleResponse": {"status":"Created!",
                             "message": "Successfully created a record!"}
       }
-
-
 }
