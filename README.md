@@ -38,6 +38,8 @@ Please follow these instructions when setting this repo up to work locally or de
     ```
     psql -f ./src/db/seed_dev/ProfileSeed.sql
     psql -f ./src/db/seed_dev/ListingSeed.sql
+    psql -f ./src/db/seed_dev/ChatSeed.sql
+    psql -f ./src/db/seed_dev/MessageSeed.sql
     ```
     You will see many `INSERT 0 1` statements appear in the console.
 

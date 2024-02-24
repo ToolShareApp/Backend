@@ -1,4 +1,3 @@
-\c toolshare
 insert into message values(500,500,505,'Hey, could I rent the rottary cutter for a few days? I have some fabric I need to cut for a project.',now(), now());
 insert into message values(501,500,500,'Sure thing! I actually just got it not too long ago. It has been a lifesaver for my quilting projects.',now(), now());
 insert into message values(502,500,505,'that is great to hear! How much would it be to rent it for a few days?',now(), now());
