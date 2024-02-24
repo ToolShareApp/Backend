@@ -12,8 +12,8 @@ class ProfileController {
             if (req.body.verified) {new_Profile_row.verified = req.body.verified};
             new_Profile_row.display_name= req.body.display_name ? req.body.display_name : "";
             new_Profile_row.bio = req.body.bio ? req.body.bio : "";
-            new_Profile_row.longitude= req.body.longitude ? req.body.longitude : 0;
-            new_Profile_row.latitude= req.body.latitude ? req.body.latitude : 0;
+            new_Profile_row.longitude= req.body.longitude ? req.body.longitude : 0.11;
+            new_Profile_row.latitude= req.body.latitude ? req.body.latitude : 52;
             if (req.body.search_radius) {new_Profile_row.search_radius = req.body.search_radius};
             new_Profile_row.picture_url = req.body.picture_url ? req.body.picture_url : "";
 
