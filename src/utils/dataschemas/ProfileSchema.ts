@@ -8,3 +8,10 @@ export const CreateProfileSchema = z.object({
     })
 })
 
+export const UpdateProfileSchema = z.object({
+    params: z.object({profile_id: z.string()}),
+    body: z.object({
+
+    })
+    .partial(),
+})

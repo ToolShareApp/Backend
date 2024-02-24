@@ -33,6 +33,37 @@ class ProfileController {
         }
     }
 
+    async update(req:Request, res:Response){
+        try{
+            const id = parseInt(req.params["profile_id"]);
+            console.log("id in the controller:", id)
+            const new_profile_row  = new Profile();
+            new_profile_row.id = id;
+            if (req.body.verified) {new_profile_row.verified = req.body.verified}
+            if (req.body.display_name) {new_profile_row.display_name = req.body.display_name}
+            if (req.body.bio) {new_profile_row.bio = req.body.bio}
+            if (req.body.longitude) {new_profile_row.longitude = req.body.longitude}
+            if (req.body.latitude) {new_profile_row.latitude = req.body.latitude}
+            req.body.search_radius?new_profile_row.search_radius = req.body.search_radius: new_profile_row.search_radius =0
+            if (req.body.picture_url) {new_profile_row.picture_url = req.body.picture_url}
+
+
+            await new ProfileQuery().update(new_profile_row);
+
+            res.status(201).json({
+                status:"Updated!",
+                message: "Successfully updated a record!"
+            });
+        } catch (err) {
+            console.log(err)
+            res.status(500).json({
+                status:"Internal Server Error!",
+                message: "Internal Server Error!"
+            })
+        }
+    }
+
+
    
     async delete (req:Request, res:Response){
         try{

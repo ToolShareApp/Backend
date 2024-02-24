@@ -207,6 +207,20 @@
                             "message": "Successfully created a record!"}
       },
 
+      "PATCH /api/profile/:profile_id": {
+        "description": "updates a record in profile table by profile id. All properties in the body are optional, the properties that are not sent will retain existing values",
+        "queries": [],
+        "requestBody":{"verified": true,
+                        "display_name": "Sarah Smith",
+                        "bio": "I love cats",
+                        "latitude": 54,
+                        "longitude": 2,
+                        "search_radius": 15,
+                        "picture_url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Avatar-gwen.jpg"},
+        "exampleResponse": {"status":"Updated!",
+                            "message": "Successfully updated a record!"}
+      },
+
       "GET /api/listing": {
         "description": "returns all data from the listing table",
         "queries": [],
