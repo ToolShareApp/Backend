@@ -77,7 +77,7 @@ export class Listing extends Model {
     description!:string
 
     @Column ({
-        type: DataType.STRING,
+        type: DataType.STRING(500),
         field: Listing.LISTING_PHOTO_URL
     })
     photo_url!:string

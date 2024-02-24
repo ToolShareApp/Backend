@@ -85,7 +85,7 @@ export class Profile extends Model {
     search_radius!:number
 
     @Column ({
-        type: DataType.STRING,
+        type: DataType.STRING(500),
         field: Profile.PROFILE_PICTURE_URL
     })
     picture_url!:string
