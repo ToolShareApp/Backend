@@ -28,7 +28,6 @@ export class Chat extends Model {
     @Column ({
         type: DataType.INTEGER,
         allowNull: false,
-        unique:true,
         field: Chat.CHAT_LISTING_ID
     })
     listing_id!:number
