@@ -330,5 +330,88 @@
                             },
         "exampleResponse": {"status":"Created!",
                             "message": "Successfully created a record!"}
+      },
+
+      "GET /api/chat/user/:user_id": {
+        "description": "returns all chats that a user is participant in",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "chat_id": 523,
+                                    "otherName": "Amir Mahmoud",
+                                    "otherUserAvatar": "https://upload.wikimedia.org/wikipedia/commons/5/53/Bumblebee_white_eyes_mad_clipart.svg",
+                                    "lastMessage": "How about tomorrow afternoon? I will be home all day, so just let me know when you are on your way.",
+                                    "lastMessageDate": "2024-02-25T15:43:27.646Z",
+                                    "chatCreatedByUserId": 524
+                                },
+                                {
+                                    "chat_id": 501,
+                                    "otherName": "Leila Naseri",
+                                    "otherUserAvatar": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Head_of_a_Woman_in_Profile_MET_DP817933.jpg",
+                                    "lastMessage": "Hi!",
+                                    "lastMessageDate": "2024-02-25T15:43:27.333Z",
+                                    "chatCreatedByUserId": 519
+                                }]}
+      },
+
+      "POST /api/chat/": {
+        "description": "adds a new chat record",
+        "queries": [],
+        "requestBody": {
+                "listingId": 505,
+                "userId":500
+          },
+        "exampleResponse": {
+            "status": "Created!",
+            "message": "Successfully created a record!",
+            "recordId": 3
+        }
+      },
+
+      "GET /api/message/chat/:chat_id": {
+        "description": "returns all messages from a chat by chat id",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "id": 500,
+                                    "username": "Mary Jane",
+                                    "userId": 505,
+                                    "userAvatar": "",
+                                    "text": "Hey, could I rent the rottary cutter for a few days? I have some fabric I need to cut for a project.",
+                                    "date": "2024-02-24T23:18:17.179Z"
+                                },
+                                {
+                                    "id": 501,
+                                    "username": "Peter Parker",
+                                    "userId": 500,
+                                    "userAvatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Spider-Man2.jpg/640px-Spider-Man2.jpg",
+                                    "text": "Sure thing! I actually just got it not too long ago. It has been a lifesaver for my quilting projects.",
+                                    "date": "2024-02-24T23:18:17.212Z"
+                                }]}
+      },
+
+      "POST /api/message/:chat_id": {
+        "description": "adds a message onto a chat by chat id",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {
+            "status": "Created!",
+            "message": "Successfully created a record!"
+        }
+      },
+
+      "DELETE /api/message/:message_id": {
+        "description": "deletes a single record from message table by record Id",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status":"Deleted!",
+                            "message": "Successfully deleted a record!"}
       }
+
 }

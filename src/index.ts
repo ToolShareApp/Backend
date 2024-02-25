@@ -4,6 +4,8 @@ import exampletableRouter from "./routers/ExampletableRouter";
 import fs from "fs/promises";
 import ProfileRouter from "./routers/ProfileRouter";
 import ListingRouter from "./routers/ListingRouter";
+import ChatRouter from "./routers/ChatRouter";
+import MessageRouter from "./routers/MessageRouter";
 
 class App {
   public app: Application;
@@ -55,6 +57,8 @@ class App {
     this.app.use("/api/docs", this.readEndpoints);
     this.app.use("/api/profile", ProfileRouter);
     this.app.use("/api/listing", ListingRouter);
+    this.app.use("/api/chat", ChatRouter);
+    this.app.use("/api/message", MessageRouter);
     this.app.use("/api/exampletable", exampletableRouter);
   }
 }
