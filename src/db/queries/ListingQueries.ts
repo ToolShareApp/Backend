@@ -5,7 +5,7 @@ interface IListingQuery {
     delete(id:number):Promise<void>;
     retrieveById(id:number):Promise<Listing[]>;
     retrieveByOwnerId(id:number):Promise<Listing[]>;
-    retrieveAll():Promise<Listing[]>;
+    retrieveAll(cateogry:any, subcategory:any):Promise<Listing[]>;
 }
 
 export class ListingQuery implements IListingQuery {
@@ -83,13 +83,22 @@ export class ListingQuery implements IListingQuery {
         }
     }
 
-    async retrieveAll():Promise<Listing[]>{
+    async retrieveAll(category:any, subcategory:any):Promise<Listing[]>{
         try {
-            return await Listing.findAll();
+
+            const whereCondition:any = {}; 
+            if (category){whereCondition.category = category }
+            if (subcategory){whereCondition.subcategory = subcategory }
+
+            console.log(whereCondition)
+
+            return await Listing.findAll({where:whereCondition});
         }
         catch(error){
             console.log(error)
             throw new Error("SELECT ALL statement did not work")
         }
     }
+
+
 }

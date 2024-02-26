@@ -90,12 +90,52 @@ class ListingController {
 
     async selectAll (req:Request, res:Response){
         try{
-            const new_Listing_row  = await new ListingQuery().retrieveAll();
+            const {category} = req.query;
+            const {subcategory} = req.query;
+            const new_Listing_row  = await new ListingQuery().retrieveAll(category, subcategory);
 
             res.status(201).json({
                 status:"OK!",
                 message: "Here is your data:",
                 data:new_Listing_row
+            });
+        } catch (err) {
+            res.status(500).json({
+                status:"Internal Server Error!",
+                message: "Internal Server Error!"
+            })
+        }
+    }
+
+    async selectCategories (req:Request, res:Response){
+        try{
+            const allListings  = await new ListingQuery().retrieveAll(null, null);
+            const categories = [...new Set(allListings.map(listing => listing.category))];
+
+            res.status(201).json({
+                status:"OK!",
+                message: "Here is your data:",
+                data:categories
+            });
+        } catch (err) {
+            res.status(500).json({
+                status:"Internal Server Error!",
+                message: "Internal Server Error!"
+            })
+        }
+    }
+
+    async selectSubCategories (req:Request, res:Response){
+        try{
+            const category = req.params["category"];
+            const all_Listings  = await new ListingQuery().retrieveAll(null, null);
+            const categoryListings  = all_Listings.filter(listing => listing.category === category);
+            const subcategories = [...new Set(categoryListings.map(listing => listing.subcategory))];
+
+            res.status(201).json({
+                status:"OK!",
+                message: "Here is your data:",
+                data:subcategories
             });
         } catch (err) {
             res.status(500).json({

@@ -222,8 +222,8 @@
       },
 
       "GET /api/listing": {
-        "description": "returns all data from the listing table",
-        "queries": [],
+        "description": "returns all data from the listing table. Can be filtered by category and/or subcategory. Expects spaces in URL to be encoded as %20.",
+        "queries": ["category", "subcategory"],
         "requestBody": {},
         "exampleResponse": {"status": "OK!",
                             "message": "Here is your data:",
@@ -279,14 +279,6 @@
                                 }]}
 
       },
-      
-      "DELETE /api/listing/:listing_id": {
-        "description": "deletes a single record from listing table by record Id",
-        "queries": [],
-        "requestBody": {},
-        "exampleResponse": {"status":"Deleted!",
-                            "message": "Successfully deleted a record!"}
-      },
 
       "GET /api/listing/owner/:owner_id": {
         "description": "returns all record from listing table for the given owner_id",
@@ -308,6 +300,50 @@
                                     "createdAt": "2024-02-21T15:46:30.334Z",
                                     "updatedAt": "2024-02-21T15:46:30.334Z"
                                 }]}
+      },
+
+      "GET /api/listing/categories": {
+        "description": "returns all categories that exist on listings in the database",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                              "Power Tools",
+                              "Hand Tools"
+                            ]}
+      },
+
+      "GET /api/listing/subcategories/:category": {
+        "description": "returns all subcategories that exist on listings in the database for the given category. Expects spaces in URL to be encoded as %20.",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                              "Cutting Tools",
+                              "Digging Tools",
+                              "Rakes and Cultivators",
+                              "Hammers",
+                              "Clamps and Vises",
+                              "Chisels and Pry Bars",
+                              "Saws",
+                              "Axes",
+                              "Pliers and Grippers",
+                              "Gardening Tools",
+                              "Measuring and Layout Tools",
+                              "Screwdrivers",
+                              "Scrapers and Putty Knives",
+                              "Wrenches"
+                                ]}
+      },
+      
+      "DELETE /api/listing/:listing_id": {
+        "description": "deletes a single record from listing table by record Id",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status":"Deleted!",
+                            "message": "Successfully deleted a record!"}
       },
 
       "POST /api/listing": {
