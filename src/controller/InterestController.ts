@@ -38,6 +38,24 @@ class InterestController {
         }
     }
 
+    async delete(req:Request, res:Response){
+        try{
+
+            await new InterestQuery().delete(req.body.listingId,req.body.userId)
+
+            res.status(201).json({
+                status:"Deleted!",
+                message: "Successfully deleted a record!"
+            });
+        } catch (err) {
+            console.log(err)
+            res.status(500).json({
+                status:"Internal Server Error!",
+                message: "Internal Server Error!"
+            })
+        }
+    }
+
      async selectWhereUserId (req:Request, res:Response){
         try{
             const userId = parseInt(req.params["user_id"]);
