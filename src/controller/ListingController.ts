@@ -90,7 +90,9 @@ class ListingController {
 
     async selectAll (req:Request, res:Response){
         try{
-            const new_Listing_row  = await new ListingQuery().retrieveAll();
+            const {category} = req.query;
+            const {subcategory} = req.query;
+            const new_Listing_row  = await new ListingQuery().retrieveAll(category, subcategory);
 
             res.status(201).json({
                 status:"OK!",

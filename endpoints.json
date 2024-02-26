@@ -222,8 +222,8 @@
       },
 
       "GET /api/listing": {
-        "description": "returns all data from the listing table",
-        "queries": [],
+        "description": "returns all data from the listing table. Can be filtered by category and/or subcategory. Expects spaces to be encoded as %20.",
+        "queries": ["category", "subcategory"],
         "requestBody": {},
         "exampleResponse": {"status": "OK!",
                             "message": "Here is your data:",
