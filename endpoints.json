@@ -399,7 +399,10 @@
       "POST /api/message/:chat_id": {
         "description": "adds a message onto a chat by chat id",
         "queries": [],
-        "requestBody": {},
+        "requestBody": {
+            "userId": 519,
+              "text":"Helloooo"
+          },
         "exampleResponse": {
             "status": "Created!",
             "message": "Successfully created a record!"
@@ -412,6 +415,54 @@
         "requestBody": {},
         "exampleResponse": {"status":"Deleted!",
                             "message": "Successfully deleted a record!"}
-      }
+      },
 
+
+      "POST /api/interest/": {
+        "description": "adds a record that the user is interested in a listing",
+        "queries": [],
+        "requestBody": {
+            "listingId": 509,
+              "userId":500
+          },
+        "exampleResponse": {
+            "status": "Created!",
+            "message": "Successfully created a record!"
+        }
+      },
+
+      "GET /api/listing/lendee/:lendee_id": {
+        "description": "returns all listings that the user is interested in",
+        "queries": [],
+        "requestBody": {},
+        "exampleResponse": {"status": "OK!",
+                            "message": "Here is your data:",
+                            "data": [
+                                {
+                                    "listing_id": 3,
+                                    "owner_id": 2,
+                                    "tool": "Big Old Hammer",
+                                    "category": "Hand Tools",
+                                    "subcategory": "Hammers",
+                                    "deposit_required": false,
+                                    "deposit_amount": 0,
+                                    "description": "Are you worthy to pick it up?",
+                                    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Edsring_och_hammare.jpg/640px-Edsring_och_hammare.jpg",
+                                    "createdAt": "2024-02-21T15:46:30.334Z",
+                                    "updatedAt": "2024-02-21T15:46:30.334Z"
+                                },
+                                {
+                                    "listing_id": 515,
+                                    "owner_id": 501,
+                                    "tool": "Chainsaw",
+                                    "category": "Power Tools",
+                                    "subcategory": "Saws",
+                                    "deposit_required": false,
+                                    "deposit_amount": 92,
+                                    "description": "The chainsaw is the ultimate tool for cutting through thick branches, logs, and trees with power and precision. Its robust design and sharp chain make it ideal for forestry, landscaping, and DIY projects. Whether youre felling trees or cutting firewood, the chainsaws efficiency and cutting power make it a go-to tool for any outdoor task.",
+                                    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Chainsaw_Pioneer_600_-_1958.jpg/640px-Chainsaw_Pioneer_600_-_1958.jpg",
+                                    "createdAt": "2024-02-25T15:42:11.543Z",
+                                    "updatedAt": "2024-02-25T15:42:11.543Z"
+                                }]}
+      }
 }

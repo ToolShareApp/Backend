@@ -5,6 +5,7 @@ import { Profile } from "../db/models/ProfileModel";
 import { Listing } from "../db/models/ListingModel";
 import { Chat } from "../db/models/ChatModel";
 import { Message } from "../db/models/MessageModel";
+import { Interest } from "../db/models/InterestModel";
 
 dotenv.config()
 
@@ -30,7 +31,7 @@ class Database {
             //host: this.POSTGRES_HOST,
             port: this.POSTGRES_PORT,
             dialect: "postgres",
-            models:[Exampletable, Profile, Listing, Chat, Message],
+            models:[Exampletable, Profile, Listing, Chat, Message,Interest],
         })
 
         await this.sequelize.authenticate()

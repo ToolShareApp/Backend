@@ -6,6 +6,7 @@ import ProfileRouter from "./routers/ProfileRouter";
 import ListingRouter from "./routers/ListingRouter";
 import ChatRouter from "./routers/ChatRouter";
 import MessageRouter from "./routers/MessageRouter";
+import InterestRouter from "./routers/InterestRouter";
 
 class App {
   public app: Application;
@@ -59,6 +60,7 @@ class App {
     this.app.use("/api/listing", ListingRouter);
     this.app.use("/api/chat", ChatRouter);
     this.app.use("/api/message", MessageRouter);
+    this.app.use("/api/interest", InterestRouter);
     this.app.use("/api/exampletable", exampletableRouter);
   }
 }
