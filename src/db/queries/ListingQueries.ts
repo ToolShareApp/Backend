@@ -99,4 +99,6 @@ export class ListingQuery implements IListingQuery {
             throw new Error("SELECT ALL statement did not work")
         }
     }
+
+
 }
