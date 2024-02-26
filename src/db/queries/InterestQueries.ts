@@ -3,6 +3,7 @@ import { Interest } from "../models/InterestModel";
 interface IInterestQuery {
     save(data:Interest):Promise<void>;
     retrieveByLendeeId(user_id:number):Promise<Interest[]>;
+    delete(listingId:number, lendeeId:number):Promise<void>;
    
 }
 
@@ -24,6 +25,25 @@ export class InterestQuery implements IInterestQuery {
         }
     }
 
+    async delete(listingId:number, lendeeId:number):Promise<void>{
+        try {
+           const Interest_row =  await Interest.findOne(
+                {
+                    where: {
+                        listing_id: listingId,
+                        lendee_id:lendeeId,
+                    }
+                })
+                if(!Interest_row){
+                    throw new Error("Could not find the record to delete")
+                }
+                await Interest_row.destroy();
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("DELETE statement did not work ")
+        }
+    }
 
     async retrieveByLendeeId(user_id:number):Promise<Interest[]>{
         try {

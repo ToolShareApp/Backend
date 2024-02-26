@@ -418,7 +418,7 @@
       },
 
 
-      "POST /api/interest/": {
+      "POST /api/interest": {
         "description": "adds a record that the user is interested in a listing",
         "queries": [],
         "requestBody": {
@@ -431,7 +431,20 @@
         }
       },
 
-      "GET /api/listing/lendee/:lendee_id": {
+      "DELETE /api/interest": {
+        "description": "removes a record that the user is interested in a listing",
+        "queries": [],
+        "requestBody": {
+            "listingId": 509,
+              "userId":500
+          },
+        "exampleResponse": {
+          "status": "Deleted!",
+          "message": "Successfully deleted a record!"
+        }
+      },
+
+      "GET /api/interest/lendee/:lendee_id": {
         "description": "returns all listings that the user is interested in",
         "queries": [],
         "requestBody": {},

@@ -7,7 +7,8 @@ import { CreateInterestSchema } from "../utils/dataschemas/InterestSchema";
 class InterestRoutes extends BaseRoutes{
     public routes():void {
        this.router.post("", validate(CreateInterestSchema), InterestController.insert)
-        this.router.get("/lendee/:user_id", InterestController.selectWhereUserId)
+       this.router.delete("", validate(CreateInterestSchema), InterestController.delete)
+       this.router.get("/lendee/:user_id", InterestController.selectWhereUserId)
     }
 }
 
