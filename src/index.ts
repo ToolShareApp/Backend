@@ -7,15 +7,38 @@ import ListingRouter from "./routers/ListingRouter";
 import ChatRouter from "./routers/ChatRouter";
 import MessageRouter from "./routers/MessageRouter";
 import InterestRouter from "./routers/InterestRouter";
+import { Server as SocketIO, Socket } from 'socket.io'
+import { createServer, Server } from 'node:http';
+
+interface Message {
+  id: number;
+  username: string;
+  userId: number;
+  userAvatar: string | null;
+  text: string;
+  date: string;
+}
+
+interface NewMessage {
+  text: string;
+}
 
 class App {
-  public app: Application;
+  public server: Server;
+  protected app: Application;
+  protected io: SocketIO;
+  protected chats: {[chatId:number]: {[userId:number]: Socket}} = {};
 
   constructor() {
     this.app = express();
+    this.server = createServer(this.app);
+    this.io = new SocketIO(this.server);
+
     this.app.use(express.json());
     this.databseSync();
     this.routes();
+
+    this.io.on('connection', (socket:Socket) => this.wsConnection(socket));
   }
 
   protected plugins(): void {
@@ -62,6 +85,45 @@ class App {
     this.app.use("/api/message", MessageRouter);
     this.app.use("/api/interest", InterestRouter);
     this.app.use("/api/exampletable", exampletableRouter);
+  }
+
+  protected wsConnection(socket: Socket) {
+    const token = socket.handshake.auth.token;
+    // @TODO Get user by token
+    const userId = socket.handshake.auth.userId;
+    const chatId = parseInt(socket.handshake.query.chatId as string);
+    console.log(`User ${userId} connected to chat ${chatId}`);
+    this.chats[chatId] ??= {};
+    this.chats[chatId][userId] = socket;
+
+    socket.on('disconnect', () => {
+      console.log(`User ${userId} disconnected from chat ${chatId}`);
+      delete this.chats[chatId][userId];
+    });
+
+    socket.on('message', async (newMessage:NewMessage) => {
+     console.log(`User ${userId} sent message to chat ${chatId}: ${newMessage.text}`);
+
+     const user = { // @TODO Load actual user info from DB
+       id: userId,
+       name: `User#${userId}`,
+       avatar: ''
+     };
+
+     const message:Message = { // @TODO Save newMessage to DB and load result
+       id: 0,
+       userId: user.id,
+       username: user.name,
+       userAvatar: user.avatar,
+       text: newMessage.text,
+       date: new Date().toString(),
+     };
+
+     for(const participantId in this.chats[chatId]) {
+       const participantSocket = this.chats[chatId][participantId];
+       participantSocket.emit('message', message);
+     }
+    });
   }
 }
 

@@ -3,8 +3,8 @@
 import App from ".";
 
 const port: number = 8001;
-const app = new App().app;
+const server = new App().server;
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Backend server is listening on port ${port}`);
 });
