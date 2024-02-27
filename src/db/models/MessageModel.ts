@@ -12,6 +12,7 @@ export class Message extends Model {
     public static MESSAGE_CHAT_ID  = "chat_id" as string;
     public static MESSAGE_AUTHOR_ID  = "author_id" as string;
     public static MESSAGE_TEXT = "text" as string;
+    public static MESSAGE_STATUS = "status" as string;
 
     @Column ({
         type: DataType.INTEGER,
@@ -41,4 +42,12 @@ export class Message extends Model {
         field: Message.MESSAGE_TEXT
     })
     text!:string
+
+    @Column ({
+        type: DataType.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+        field: Message.MESSAGE_STATUS
+    })
+    status!:number
 }

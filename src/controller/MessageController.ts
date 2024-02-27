@@ -10,6 +10,7 @@ interface IChatMessages {
     userId: number;
     userAvatar:string|null;
     text:string;
+    status:number;
     date:string;
 }
 
@@ -37,7 +38,31 @@ class MessageController {
         }
     }
 
-  
+    async update(req:Request, res:Response){
+        try{
+            const id = parseInt(req.params["message_id"]);
+
+            const new_message_row  = new Message();
+            new_message_row.id = id;
+            if (req.body.text ) {new_message_row.text = req.body.text}
+            if (req.body.status|| req.body.status === 0) {new_message_row.status = req.body.status}
+
+            await new MessageQuery().update(new_message_row);
+
+            res.status(201).json({
+                status:"Updated!",
+                message: "Successfully updated a record!"
+            });
+        } catch (err) {
+            console.log(err)
+            res.status(500).json({
+                status:"Internal Server Error!",
+                message: "Internal Server Error!"
+            })
+        }
+    }
+
+
     async delete (req:Request, res:Response){
         try{
             const id = parseInt(req.params["message_id"]);
@@ -76,6 +101,7 @@ class MessageController {
                 userId: message.author_id,
                 userAvatar:userDetails.filter((user)=> {return user.profile_id ===message.author_id})[0].picture_url,
                 text:message.text,
+                status:message.status,
                 date:message.createdAt
                 }
                 return chatMessage;

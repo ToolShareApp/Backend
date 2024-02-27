@@ -25,6 +25,28 @@ export class MessageQuery implements IMessageQuery {
         }
     }
 
+    async update(data:Message):Promise<void>{
+        try {
+           const message_row =  await Message.findOne(
+                {
+                    where: {
+                        message_id: data.id,
+                    }
+                })
+                if(!message_row){
+                    throw new Error("Could not find the record to update")
+                }
+                if (data.text){message_row.text = data.text}
+                if (data.status || data.status === 0){message_row.status = data.status}
+
+                await message_row.save();
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("UPDATE statement did not work")
+        }
+    }
+
     async delete(record_id:number):Promise<void>{
         try {
            const Message_row =  await Message.findOne(
@@ -76,7 +98,9 @@ export class MessageQuery implements IMessageQuery {
                     stub_message.chat_id = chat_id;
                     stub_message.author_id = 0;
                     stub_message.text = ""
+                    stub_message.status = 0;
                     stub_message.createdAt = new Date();
+                    
                     return stub_message;
                 }
             
