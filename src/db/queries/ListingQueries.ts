@@ -58,7 +58,8 @@ export class ListingQuery implements IListingQuery {
                 {
                     where: {
                         listing_id: record_id,
-                    }
+                    },
+                    order:[['createdAt','DESC']]
                 })
         }
         catch(error){
@@ -74,7 +75,8 @@ export class ListingQuery implements IListingQuery {
                 {
                     where: {
                         owner_id: record_id,
-                    }
+                    },
+                    order:[['createdAt','DESC']]
                 })
         }
         catch(error){
@@ -92,7 +94,8 @@ export class ListingQuery implements IListingQuery {
 
             console.log(whereCondition)
 
-            return await Listing.findAll({where:whereCondition});
+            return await Listing.findAll({where:whereCondition,
+                order:[['createdAt','DESC']]});
         }
         catch(error){
             console.log(error)
