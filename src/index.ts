@@ -9,8 +9,11 @@ import MessageRouter from "./routers/MessageRouter";
 import InterestRouter from "./routers/InterestRouter";
 import { Server as SocketIO, Socket } from 'socket.io'
 import { createServer, Server } from 'node:http';
+import { ProfileQuery } from './db/queries/ProfileQueries'
+import { MessageQuery } from './db/queries/MessageQueries'
+import { Message } from './db/models/MessageModel'
 
-interface Message {
+interface MessageInterface {
   id: number;
   username: string;
   userId: number;
@@ -93,36 +96,51 @@ class App {
     const userId = socket.handshake.auth.userId;
     const chatId = parseInt(socket.handshake.query.chatId as string);
     console.log(`User ${userId} connected to chat ${chatId}`);
-    this.chats[chatId] ??= {};
-    this.chats[chatId][userId] = socket;
+    this.chats[chatId] ??= {}; // init chat object
+    this.chats[chatId][userId] = socket; // put socket connection to chat object, for external access.
 
-    socket.on('disconnect', () => {
+    socket.on('disconnect', () => { // remove socket from chat if user left chat
       console.log(`User ${userId} disconnected from chat ${chatId}`);
       delete this.chats[chatId][userId];
     });
 
-    socket.on('message', async (newMessage:NewMessage) => {
-     console.log(`User ${userId} sent message to chat ${chatId}: ${newMessage.text}`);
+    socket.on('message', async (newMessage:NewMessage) => { // when user send new message
+      try {
+        console.log(`User ${userId} sent message to chat ${chatId}: ${newMessage.text}`);
+        // Load actual user info from DB
+        const profile_row = await new ProfileQuery().retrieveById(userId);
 
-     const user = { // @TODO Load actual user info from DB
-       id: userId,
-       name: `User#${userId}`,
-       avatar: ''
-     };
+        const user = {
+          id: profile_row[0].profile_id,
+          name: profile_row[0].display_name,
+          avatar: profile_row[0].picture_url,
+        };
+        // Save newMessage to DB and load result
+        const new_Message_row = new Message();
+        new_Message_row.chat_id = chatId;
+        new_Message_row.author_id = userId;
+        new_Message_row.text = newMessage.text;
 
-     const message:Message = { // @TODO Save newMessage to DB and load result
-       id: 0,
-       userId: user.id,
-       username: user.name,
-       userAvatar: user.avatar,
-       text: newMessage.text,
-       date: new Date().toString(),
-     };
+        const recordId = await new MessageQuery().save(new_Message_row);
 
-     for(const participantId in this.chats[chatId]) {
-       const participantSocket = this.chats[chatId][participantId];
-       participantSocket.emit('message', message);
-     }
+        const messageRecord = await new MessageQuery().retrieveById(recordId);
+
+        const message: MessageInterface = {
+          id: messageRecord!.message_id,
+          userId: messageRecord!.author_id,
+          username: user.name,
+          userAvatar: user.avatar,
+          text: messageRecord!.text,
+          date: messageRecord!.createdAt,
+        };
+
+        for (const participantId in this.chats[chatId]) {
+          const participantSocket = this.chats[chatId][participantId];
+          participantSocket.emit('message', message);
+        }
+      } catch (error) {
+        console.error(error)
+      }
     });
   }
 }
