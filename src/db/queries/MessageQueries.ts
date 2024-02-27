@@ -60,6 +60,21 @@ export class MessageQuery implements IMessageQuery {
             throw new Error("SELECT ALL statement did not work")
         }
     }
+    async retrieveById(record_id:number):Promise<Message|null>{
+        try {
+            return await Message.findOne(
+                {
+                    where: {
+                      message_id: record_id,
+                    },
+                }
+            );
+        }
+        catch(error){
+            console.log(error)
+            throw new Error("SELECT FROM WHERE statement did not work ")
+        }
+    }
 
     async retrieveLastInChat(chat_id:number):Promise<Message>{
         try{
