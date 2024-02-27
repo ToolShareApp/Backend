@@ -17,22 +17,39 @@ interface IChat {
 class ChatController {
     async insert(req:Request, res:Response){
         try{
+            let status = "Created!"
+            let message= "Successfully created a record!"
+            let recordId = 0;
+            
+            const listingId = parseInt(req.body.listingId);
+            const lendeeId = parseInt(req.body.userId);
             const listing = await new ListingQuery().retrieveById(req.body.listingId);
-            const now = new Date()
+            const ownerId = listing[0].owner_id;
 
-            const new_Chat_row  = new Chat();
-            new_Chat_row.listing_id = req.body.listingId;
-            new_Chat_row.owner_id = listing[0].owner_id;
-            new_Chat_row.lendee_id = req.body.userId;
-            new_Chat_row.start_dt= now;
-            new_Chat_row.start_dt= new Date(now.getDate()+30);
-            new_Chat_row.status = 0;
+            const existingChat = await new ChatQuery().retrieveByUserIds(listingId,ownerId,lendeeId);
 
-            const recordId = await new ChatQuery().save(new_Chat_row);
+            if (existingChat.length > 0){
+                status = "Retrieved!"
+                message = "Chat record already exists."
+                recordId = existingChat[0].chat_id;
+            }
+            else {
+                const now = new Date()
+                const new_Chat_row  = new Chat();
+                new_Chat_row.listing_id = listingId;
+                new_Chat_row.owner_id = ownerId;
+                new_Chat_row.lendee_id = lendeeId;
+                new_Chat_row.start_dt= now;
+                new_Chat_row.start_dt= new Date(now.getDate()+30);
+                new_Chat_row.status = 0;
+
+                recordId = await new ChatQuery().save(new_Chat_row);
+            }
+
 
             res.status(201).json({
-                status: "Created!",
-                message: "Successfully created a record!",
+                status: status,
+                message: message,
                 recordId: recordId
             });
         } catch (err) {

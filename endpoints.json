@@ -394,15 +394,15 @@
       },
 
       "POST /api/chat/": {
-        "description": "adds a new chat record",
+        "description": "if chat does not exist, will create a new chat and return the chat id. Otherwise returns the id of an existing chat",
         "queries": [],
         "requestBody": {
                 "listingId": 505,
                 "userId":500
           },
         "exampleResponse": {
-            "status": "Created!",
-            "message": "Successfully created a record!",
+            "status": "Created! | Retrieved!",
+            "message": "Successfully created a record! | Chat record already exists.",
             "recordId": 3
         }
       },
