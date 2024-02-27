@@ -14,7 +14,7 @@ import { MessageQuery } from './db/queries/MessageQueries'
 import { Message } from './db/models/MessageModel'
 
 interface MessageInterface {
-  id: number;
+  messageId: number;
   username: string;
   userId: number;
   userAvatar: string | null;
@@ -126,7 +126,7 @@ class App {
         const messageRecord = await new MessageQuery().retrieveById(recordId);
 
         const message: MessageInterface = {
-          id: messageRecord!.message_id,
+          messageId: messageRecord!.message_id,
           userId: messageRecord!.author_id,
           username: user.name,
           userAvatar: user.avatar,
