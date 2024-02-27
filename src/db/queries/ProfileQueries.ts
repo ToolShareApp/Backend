@@ -36,7 +36,7 @@ export class ProfileQuery implements IProfileQuery {
 
     async update(data:Profile):Promise<void>{
         try {
-            console.log("search_radius in queries: ", data.search_radius)
+
            const profile_row =  await Profile.findOne(
                 {
                     where: {
@@ -46,7 +46,7 @@ export class ProfileQuery implements IProfileQuery {
                 if(!profile_row){
                     throw new Error("Could not find the record to update")
                 }
-                console.log("profile_row.search_radius: ",  profile_row.search_radius)
+
                 data.verified? profile_row.verified = data.verified:profile_row.verified =profile_row.verified 
                 if (data.display_name){profile_row.display_name = data.display_name}
                 if (data.bio){profile_row.bio = data.bio}
