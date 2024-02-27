@@ -36,7 +36,6 @@ class ProfileController {
     async update(req:Request, res:Response){
         try{
             const id = parseInt(req.params["profile_id"]);
-            console.log("id in the controller:", id)
             const new_profile_row  = new Profile();
             new_profile_row.id = id;
             if (req.body.verified) {new_profile_row.verified = req.body.verified}

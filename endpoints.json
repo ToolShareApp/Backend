@@ -393,7 +393,7 @@
                                 }]}
       },
 
-      "POST /api/chat/": {
+      "POST /api/chat": {
         "description": "if chat does not exist, will create a new chat and return the chat id. Otherwise returns the id of an existing chat",
         "queries": [],
         "requestBody": {
@@ -443,6 +443,15 @@
             "status": "Created!",
             "message": "Successfully created a record!"
         }
+      },
+
+      "PATCH /api/message/:message_id": {
+        "description": "updates a record in message table by message id. All properties in the body are optional, the properties that are not sent will retain existing values",
+        "queries": [],
+        "requestBody":{"status": 2,
+                        "text": "this message has been edited"},
+        "exampleResponse": {"status":"Updated!",
+                            "message": "Successfully updated a record!"}
       },
 
       "DELETE /api/message/:message_id": {
