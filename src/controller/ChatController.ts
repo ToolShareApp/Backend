@@ -69,7 +69,7 @@ class ChatController {
             
             const lendeeUsers = [...new Set(ownerChats.map(item => item.lendee_id))];
             const ownerUsers = [...new Set(lendeeChats.map(item => item.owner_id))];
-            const allUsers = lendeeUsers.concat(ownerUsers)
+            const allUsers = [...new Set(lendeeUsers.concat(ownerUsers))];
 
             const userDetailsPromise = Promise.all(allUsers.map(userId=>new ProfileQuery().retrieveById(userId)));
             const userDetails = (await userDetailsPromise).flat();
