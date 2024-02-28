@@ -20,6 +20,7 @@ interface MessageInterface {
   userAvatar: string | null;
   text: string;
   date: string;
+  status: number;
 }
 
 interface NewMessage {
@@ -132,6 +133,7 @@ class App {
           userAvatar: user.avatar,
           text: messageRecord!.text,
           date: messageRecord!.createdAt,
+          status: messageRecord!.status,
         };
 
         for (const participantId in this.chats[chatId]) {
