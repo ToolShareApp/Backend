@@ -93,6 +93,7 @@
                                     "longitude": 144.25855,
                                     "search_radius": 15,
                                     "picture_url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Avatar-gwen.jpg",
+                                    "address": "99 SomeStreet, Sometown, Somewhere",
                                     "createdAt": "2024-02-19T21:03:51.595Z",
                                     "updatedAt": "2024-02-19T21:03:51.595Z"
                                 },
@@ -107,6 +108,7 @@
                                     "longitude": -116.14166,
                                     "search_radius": 15,
                                     "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Alxira5_Avatar.svg/640px-Alxira5_Avatar.svg.png",
+                                    "address": "CB1 0AA",
                                     "createdAt": "2024-02-19T21:22:07.727Z",
                                     "updatedAt": "2024-02-19T21:22:07.727Z"
                                 }
@@ -131,6 +133,7 @@
                                     "longitude": -116.14166,
                                     "search_radius": 15,
                                     "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Alxira5_Avatar.svg/640px-Alxira5_Avatar.svg.png",
+                                    "address": "99 SomeStreet, Sometown, Somewhere",
                                     "createdAt": "2024-02-19T21:22:07.727Z",
                                     "updatedAt": "2024-02-19T21:22:07.727Z"
                                 }]}
@@ -162,6 +165,7 @@
                                     "longitude": -116.14166,
                                     "search_radius": 15,
                                     "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Alxira5_Avatar.svg/640px-Alxira5_Avatar.svg.png",
+                                    "address": "99 SomeStreet, Sometown, Somewhere",
                                     "createdAt": "2024-02-19T21:22:07.727Z",
                                     "updatedAt": "2024-02-19T21:22:07.727Z"
                                 }]}
@@ -185,6 +189,7 @@
                                     "longitude": -116.14166,
                                     "search_radius": 15,
                                     "picture_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Alxira5_Avatar.svg/640px-Alxira5_Avatar.svg.png",
+                                    "address": "99 SomeStreet, Sometown, Somewhere",
                                     "createdAt": "2024-02-19T21:22:07.727Z",
                                     "updatedAt": "2024-02-19T21:22:07.727Z"
                                 }]}
@@ -201,7 +206,8 @@
                         "latitude": -33.68595,
                         "longitude": 144.25855,
                         "search_radius": 15,
-                        "picture_url": ""},
+                        "picture_url": "",
+                        "formattedAddress": "99 SomeStreet, Sometown, Somewhere"},
         "minimumRequestBody":{"email": "Sarah@domain.com"},
         "exampleResponse": {"status":"Created!",
                             "message": "Successfully created a record!"}
@@ -216,7 +222,8 @@
                         "latitude": 54,
                         "longitude": 2,
                         "search_radius": 15,
-                        "picture_url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Avatar-gwen.jpg"},
+                        "picture_url": "https://upload.wikimedia.org/wikipedia/commons/7/75/Avatar-gwen.jpg",
+                        "formattedAddress": "99 SomeStreet, Sometown, Somewhere"},
         "exampleResponse": {"status":"Updated!",
                             "message": "Successfully updated a record!"}
       },

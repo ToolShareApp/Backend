@@ -15,6 +15,7 @@ class ProfileController {
             new_Profile_row.longitude= req.body.longitude ? req.body.longitude : 0.11;
             new_Profile_row.latitude= req.body.latitude ? req.body.latitude : 52;
             if (req.body.search_radius) {new_Profile_row.search_radius = req.body.search_radius};
+            new_Profile_row.address = req.body.formattedAddress ? req.body.formattedAddress : "";
             new_Profile_row.picture_url = req.body.picture_url ? req.body.picture_url : "";
 
 
@@ -45,6 +46,7 @@ class ProfileController {
             if (req.body.latitude) {new_profile_row.latitude = req.body.latitude}
             req.body.search_radius?new_profile_row.search_radius = req.body.search_radius: new_profile_row.search_radius =0
             if (req.body.picture_url) {new_profile_row.picture_url = req.body.picture_url}
+            if (req.body.formattedAddress) {new_profile_row.address = req.body.formattedAddress}
 
 
             await new ProfileQuery().update(new_profile_row);
