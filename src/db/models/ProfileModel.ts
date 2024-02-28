@@ -16,6 +16,7 @@ export class Profile extends Model {
     public static PROFILE_BIO  = "bio" as string;
     public static PROFILE_LONGITUDE  = "longitude" as string;
     public static PROFILE_LATITUDE  = "latitude" as string;
+    public static PROFILE_ADDRESS  = "address" as string;
     public static PROFILE_SEARCH_RADIUS  = "search_radius" as string;
     public static PROFILE_PICTURE_URL  = "picture_url" as string;
 
@@ -89,4 +90,10 @@ export class Profile extends Model {
         field: Profile.PROFILE_PICTURE_URL
     })
     picture_url!:string
+
+    @Column ({
+        type: DataType.STRING(1000),
+        field: Profile.PROFILE_ADDRESS
+    })
+    address!:string
 }

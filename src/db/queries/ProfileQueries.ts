@@ -24,6 +24,7 @@ export class ProfileQuery implements IProfileQuery {
                     longitude: data.longitude,
                     latitude: data.latitude,
                     search_radius: data.search_radius,
+                    address: data.address,
                     picture_url: data.picture_url,
                 }
             )
@@ -54,6 +55,7 @@ export class ProfileQuery implements IProfileQuery {
                 if (data.latitude){profile_row.latitude = data.latitude}
                 data.search_radius !== 0 ? profile_row.search_radius = data.search_radius:profile_row.search_radius =profile_row.search_radius 
                 if (data.picture_url){profile_row.picture_url = data.picture_url}
+                if (data.address){profile_row.address = data.address}
 
                 await profile_row.save();
         }
